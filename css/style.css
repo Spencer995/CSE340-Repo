@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+  }
+  html{
+      align-items: center;
+  }
+  body{
+      background: url(../images/site/small_check.jpg);
+      background-size:cover;
+      background-repeat: no-repeat;
+      font-family: 'Rajdhani', sans-serif;
+      max-width: 78%;
+      margin: 15px auto;
+  }
+  [id = cover_div]{
+      background-color: #ffffff;
+      margin: 20px 10px;
+      border: 4px solid #4c96d7;
+      border-radius: 7px;
+  }
+  #top_header{
+      display: flex;
+      align-items: center;
+      justify-content: space-around; 
+      margin: 7px; 
+  }
+  header a:nth-child(2){
+      color: black;
+      margin-right: 9px;
+      font-size: small;
+     
+  }
+  header a:nth-child(1){
+    font-size: larger;
+    color: #2c29c5;
+}
+header a:nth-child(1):hover{
+    color: red;
+    text-decoration: underline;
+}
+  header img{
+      width: 60%;
+      height: auto;
+  }
+  #nav_bar li a{
+    color: #ffffff;
+    font-size: 8.6px;
+  }
+ #nav_bar li{
+    color: white;
+    font-size: smaller;
+    padding: .5rem;
+    text-align:center;
+}
+ #nav_items_list{
+    display:flex;
+}
+#nav_bar{
+      background-color: #3a3a3a;
+}
+#nav_bar li:hover,#nav_bar li a:hover{
+      background-color: #4c96d7;
+      color:black;
+}
+main h1{
+    margin: 15px 5px 15px 5px;
+    font-size: medium;
+}
+.errorMsg{
+    margin-left: 10px;
+    color: rgba(233, 6, 6, 0.582);
+    font-weight: bold;
+}
+.successMsg{
+    margin-left: 10px;
+    color: green;
+    font-weight: bold;
+}
+.vehicleMgnt li a{
+    margin: 30px;
+    color: black;
+    font-size: larger;
+}
+.vehicleMgnt li a:hover{
+    text-decoration: underline;
+    color: #2c29c5;
+    font-weight: bold;
+}
+.review_upgrade{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 10px;
+}
+.upgrade_parts{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.upgrade_parts>figure{
+    text-align: center;
+    padding: 10px 5px;
+}
+.image_div{
+    background-color: #4c96d7;
+    padding: .2em 2em .2em 2em;
+}
+.upgrade_parts figure img{
+    width: 45px;
+    height: 60px;
+}
+#review_list li{
+    list-style-type: disc;
+    letter-spacing: 1px;
+    line-height: 25px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.review_area h2, .upgrade_wrapper h2{
+    margin-bottom: 10px;
+}
+.review_upgrade h2{
+    font-size: medium;
+}
+.review_area h2{
+    margin-top: 42px;
+}
+figcaption{
+    text-decoration: underline;
+    font-size: 67%;
+}
+.banner_image{
+    position: relative;
+    text-align: center;
+}
+#delorean-features{
+    position: absolute;
+    margin: 0 0 0 10px;
+    color: #4c96d7;
+    float: left;
+    text-align: left;
+    font-size: smaller;
+}
+#delorean-features h2{
+    font-size: small;
+}
+.banner_image img{
+    max-width: 90%;
+    max-height: auto;
+    margin: 25px;
+}
+.own_today_button{
+    position: absolute;
+    align-self: center;
+    margin-top: 125px;
+    max-width: 10em;
+    margin-left: 25px;
+}
+  footer{
+    text-align: center;
+    border-top: 3px solid #3a3a3a;
+    padding: 6px;
+    line-height: 25px;
+    font-size: 13px;
+    margin: 10px 0 0 0;
+    font-weight: bold;
+    color: black;
+}
+[class = "err_msg"]{
+    margin: 15px;
+    color: black;
+}
+.form{
+    font-weight: bold;
+    max-width: 80%;
+    margin: auto;
+}
+.form fieldset{
+    border-radius: 10px;
+    color: #2c29c5;
+    margin: 1em 0;
+}
+label + input{
+    display: block;
+    clear: both;
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+    font-size: small;
+    padding-left: 5px;
+}
+label + input:required:invalid{
+    border-left: 5px solid red;
+}
+label + input:required:valid{
+    border-left: 5px solid green;
+}
+.form fieldset > p{
+    margin: 3%;
+}
+legend{
+    text-align: right;
+    margin-right: 12px ;
+}
+[type = submit]{
+    border-radius: 20px;
+    width: 14em;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #7cb0df;
+    font-weight: bolder;
+    font-size: 1em;
+}
+[type = submit]:hover{
+    cursor: pointer;
+}
+.reglink{
+    text-align: center;
+    font-size: smaller;
+}
+.reglink a{
+    font-weight: bolder;
+    color:  #2c29c5;
+}
+p.required{
+    color: rgba(233, 6, 6, 0.582);
+    font-weight: bold;
+}
+[name="invDescription"]{
+    width:80%
+}
+.spanInfo{
+    font-size: smaller;
+    color: black;
+}
+[class='loginUser']{
+    margin:10px;
+}
+[class='loginUser'] li{
+    margin: 6px 0 5px 20px;
+}
+a.loginUser{
+    margin: 6px 0 5px 30px;
+    color: #2c29c5;
+    font-weight: bold;
+}
+a.loginUser:hover{
+    text-decoration: underline;
+    color: #4c96d7;
+    font-weight: bolder;
+}
+/* ----------For Large Screens------------- */
+
+@media screen and (min-width:800px){
+    .review_upgrade{
+        display: flex;
+        flex-direction:row-reverse;
+        margin: 20px;
+    }
+    #delorean-features{
+        float: left;
+        text-align: left;
+    }
+    .own_today_button{
+        position: absolute;
+        float: left;
+        margin-top: 140px;
+        max-width: 10em;
+        margin-left: -32px;
+    }
+    #review_list li{
+        list-style-type: disc;
+        letter-spacing: 2.5px;
+        line-height: 30px;
+        margin-left: 20px;
+        font-size: smaller;
+    }
+    #top_header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;  
+    }
+    header a:nth-child(2){
+        margin-right: 15px;
+        font-size: larger;
+    }
+    header img{
+        width: 100%;
+        height: auto;
+    }
+    #nav_bar li a{
+      color: #ffffff;
+      font-size: 18px;
+    }
+    .image_div{
+        background-color: #4c96d7;
+        padding: .5em 6em .2em 6em;
+    }
+    figcaption{
+        font-size: 16px;
+    }
+    #review_area h2{
+        margin-top: 0;
+    }
+    main h1{
+        font-size: 30px;
+    }
+    #delorean-features{
+        position: absolute;
+        margin-left: 35px;
+        color: #4c96d7;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    #delorean-features h2{
+        font-size: larger;
+    }
+    #delorean-features p{
+        color: #033158;
+    }
+    .banner_image img{
+        max-width: 90%;
+        max-height: auto;
+        margin: 5px;
+    }
+    .review_upgrade h2{
+        font-size: larger;
+    }
+    [class = "err_msg"]{
+        margin: 15px;
+        color: black;
+        font-weight: bold;
+    }
+    label + input{
+        width: 40%;
+        height: 40px;
+        font-size: larger;
+    }
+    legend{
+        text-align: center;
+    }
+    [type = submit]{
+        width: 10em;
+        font-size: 1em;
+    }
+    .reglink{
+        font-size: large;
+    }
+    [name="invDescription"]{
+        width:40%
+    }
+}
