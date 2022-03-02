@@ -27,5 +27,18 @@ function checkClassInput($newClassification){
     $pattern = '(^[a-zA-Z0-9\s]{2,30}$)';
     return preg_match($pattern, $newClassification);
 }
+//Function to build the classification drop down menu
+function buildClassificationList($classification){
+    //Get the classification for the DB
+    $classifications = getClassifications();
+    //Create the dynamic select list
+    $classificationList = "<select name='classificationId' id='classificationList'>";
+    $classificationList .= "<option> Choose a Classification </option>";
+    foreach ($classifications as $classification) {
+        $classificationList .= "<option value='$classification[classificationId]'> $classification[classificationName]</option>";
+    }
+    $classificationList .= '</select>';
+    return $classificationList;
+}
 
 ?>

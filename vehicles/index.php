@@ -70,6 +70,7 @@ switch ($action){
             exit;
         }
         break;
+
     //This case statement handles data from the add classification form
     case 'Classification':
         //Values to hold the data coming from the add classification form
@@ -103,8 +104,21 @@ switch ($action){
     case 'add_vehicles':
         include '../view/add-vehicle.php';
         break;
+    
+        //Case to get vehicles by classificationId
+        //used for starting the Update and Delete process
+    case 'getInventoryItems':
+        //Get the classificationId
+        $classificationId = filter_input(INPUT_GET, 'classificationId', FILTER_SANITIZE_NUMBER_INT);
+        //Fethc the vehicles by classificationId from the DB
+        $inventoryArray = getInventoryByClassification($classificationId);
+        //convert the array to a JSOn object and send it back
+        echo json_encode($inventoryArray);
+        break;
+
     //default switch case to deliver the vehicle management view
     default:
+        $classificationList = buildClassificationList($classifications);
         include '../view/vehicle-management.php'; 
    
 }

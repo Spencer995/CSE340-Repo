@@ -254,6 +254,17 @@ a.loginUser:hover{
     color: #4c96d7;
     font-weight: bolder;
 }
+
+/* Table styleing */
+table{
+    margin:15px
+}
+td{
+    padding-left: 15px;
+}
+[class='tableDiv']{
+    margin-left: 15px;
+}
 /* ----------For Large Screens------------- */
 
 @media screen and (min-width:800px){

@@ -56,4 +56,16 @@ function addClassification($classificationName){
     //where the function will be called and used
     return $rowsChanged;
 }
+
+//Get all the vehicles specific to a given classificationId
+function getInventoryByClassification($classificationId){
+    $db = phpmotorsConnect();
+    $sql = ' SELECT * FROM inventory WHERE classificationId = :classificationId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':classificationId', $classificationId, PDO::PARAM_INT);
+    $stmt->execute();
+    $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $inventory;
+}
 ?>
