@@ -15,7 +15,7 @@ $selectList .= "<option value='none'>Choose a Car Classification</option>";
 foreach($classifications as $classification){
     $selectList .= "<option value='$classification[classificationId]'";
         if(isset($classificationId)){
-            if($classification['classificationId'] === $classificationId){
+            if($classification['classificationId'] == $classificationId){
                 $selectList .= ' selected ';
             }
         }
@@ -106,8 +106,11 @@ $selectList .= "</select>";
                     
                 </fieldset>
              <input type="submit" name="submit" id="addvehiclebtn" value="Update Vehicle">
-             <input type="hidden" name="action" value="updateVehicles">
-             </form>
+             <input type="hidden" name="action" value="updateVehicle">
+             <input type="hidden" name="invId" value="
+                <?php if(isset($invInfo['invId'])){ echo $invInfo['invId'];} 
+                elseif(isset($invId)){ echo $invId; } ?> ">
+            </form>
         </main>
         <footer id="site_footer">
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/footer.php'; ?>

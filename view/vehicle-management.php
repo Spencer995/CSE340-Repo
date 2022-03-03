@@ -9,6 +9,10 @@ else{
     header("Location: /phpmotors/");
 }
 
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+}
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,3 +62,4 @@ else{
     <script src="../js/inventory.js"></script>
 </body>
 </html>
+<?php unset($_SESSION['message']); ?>
