@@ -68,4 +68,15 @@ function getInventoryByClassification($classificationId){
     $stmt->closeCursor();
     return $inventory;
 }
+//Fucnction to query the table and get vehicle infor mation form the inventory table
+function getInvItemInfo($invId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT * FROM inventory WHERE Invid = :invId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
+    $stmt->execute();
+    $invinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $invinfo;
+}
 ?>

@@ -116,6 +116,17 @@ switch ($action){
         echo json_encode($inventoryArray);
         break;
 
+    case 'mod':
+        //Capture the Inventory Id value that was sent from the vehicle management view
+        $invId = filter_input(INPUT_GET, 'invId', FILTER_VALIDATE_INT);
+        $invInfo = getInvItemInfo($invId);
+        if (count($invInfo)<1) {
+            $message = 'Sorry, no vehicle information could be found';
+        }
+        include '../view/vehicle-update.php';
+        exit;
+        break;
+
     //default switch case to deliver the vehicle management view
     default:
         $classificationList = buildClassificationList($classifications);
