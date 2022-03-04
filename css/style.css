@@ -151,7 +151,7 @@ figcaption{
 }
 .banner_image img{
     max-width: 90%;
-    max-height: auto;
+    max-height: 70%;
     margin: 25px;
 }
 .own_today_button{
@@ -336,7 +336,7 @@ td{
     }
     .banner_image img{
         max-width: 90%;
-        max-height: auto;
+        max-height: 70%;
         margin: 5px;
     }
     .review_upgrade h2{

@@ -2,7 +2,6 @@
     if(!isset($_SESSION['loggedin'])){
         header("Location: /phpmotors/");
     }
-
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,26 +27,25 @@
             $clientLevel = $_SESSION['clientData']['clientLevel'];
             $clientMail = $_SESSION['clientData']['clientEmail'];
             echo "<h1 class='loginUser'>$clientFName $clientLName</h1>";
+            if (isset($_SESSION['message'])){
+                echo $_SESSION['message'];
+            }
+            elseif (isset($message)) {
+                echo $message;
+            }
             echo "<h2 class='loginUser'>You are logged in:</h2>";
             echo "<ol class='loginUser'>
                     <li>First Name: $clientFName </li>
                     <li>Last Name: $clientLName </li>
                     <li>Email: $clientMail</li>
-                    <li>Level: $clientLevel</li>
                 </ol>";
+                echo "<br><h3 class='loginUser'>Use this link to update account information</h3>";
+                echo "<a href='/phpmotors/accounts?action=accountUpdateView' class='loginUser' id='updateUserInfo'>Update Information</a>";
             if ($clientLevel > 1) {
-                echo "<h3 class='loginUser'>Use this link to manage vehicle inventory</h3>";
+                echo "<br><br><h3 class='loginUser'>Use this link to manage vehicle inventory</h3>";
                 echo "<a href='/phpmotors/vehicles/' class='loginUser' id='vehicle_mgnt'>Vehicle Management</a>";
             }
-
-            
             ?>
-
-            <ol>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ol>
         </main>
         <footer id="site_footer">
             <?php require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/footer.php'; ?>
@@ -55,3 +53,4 @@
     </div>
 </body>
 </html>
+<?php unset($_SESSION['message']); ?>

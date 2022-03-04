@@ -69,4 +69,72 @@ function getClient($clientEmail){
     $stmt->closeCursor();
     return $clientInfo;
 }
+//function to change client password
+function changePassword ($clientId, $clientPassword) {
+            // Create a connection object using the phpmotors coonection function
+        $db = phpmotorsConnect();
+        //The sql INSERT statement to update the client password in the clients table
+        $sql = 'UPDATE clients
+                SET clientPassword = :clientPassword
+                WHERE clientId = :clientId';
+        // create the prepared statement using the phpmotors connection
+        $stmt = $db->prepare($sql);
+        //The next lines replace the sql placeholders with the actual values in the variables
+        //The also tell the database the type of data they are.
+        $stmt->bindValue(':clientId',$clientId, PDO::PARAM_INT);
+        $stmt->bindValue(':clientPassword',$clientPassword, PDO::PARAM_STR);
+        //Insert the data
+        $stmt->execute();
+        //Ask how many rows changed as result of the insert
+        $rowsChanged = $stmt->rowCount();
+        //close the database interaction
+        $stmt->closeCursor();
+        //Return the indication of success(rows changed)
+        return $rowsChanged;
+}
+
+//function to update the client information
+function updateClientInfo ($clientId, $clientFirstname, $clientLastname, $clientEmail) {
+    // Create a connection object using the phpmotors coonection function
+$db = phpmotorsConnect();
+//The sql INSERT statement to update the client info in the clients table
+$sql = 'UPDATE clients
+        SET clientFirstname = :clientFirstname, clientLastname = :clientLastname, clientEmail = :clientEmail
+        WHERE clientId = :clientId';
+// create the prepared statement using the phpmotors connection
+$stmt = $db->prepare($sql);
+//The next lines replace the sql placeholders with the actual values in the variables
+//The also tell the database the type of data they are.
+$stmt->bindValue(':clientId',$clientId, PDO::PARAM_INT);
+$stmt->bindValue(':clientFirstname',$clientFirstname, PDO::PARAM_STR);
+$stmt->bindValue(':clientLastname',$clientLastname, PDO::PARAM_STR);
+$stmt->bindValue(':clientEmail',$clientEmail, PDO::PARAM_STR);
+//Insert the data
+$stmt->execute();
+//Ask how many rows changed as result of the insert
+$rowsChanged = $stmt->rowCount();
+//close the database interaction
+$stmt->closeCursor();
+//Return the indication of success(rows changed)
+return $rowsChanged;
+}
+
+function getClientUpdate($clientId){
+    //Gets the connection to the sever and DB
+    $db = phpmotorsConnect();
+    //SQL to get the updated user infomation from the DB
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword 
+            FROM clients
+            WHERE clientId = :clientId';
+    //code to prepare the sql statement
+    $stmt = $db->prepare($sql);
+    //bind the placeholder to the passed in variable
+    $stmt->bindValue(':clientId',$clientId,PDO::PARAM_STR);
+    //Execute the code
+    $stmt->execute();
+    //fetch the user detail with the the table column name as the associative name value pair
+    $clientInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $clientInfo;
+}
 ?>

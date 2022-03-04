@@ -131,6 +131,86 @@ switch ($action){
         include '../view/registration.php';
         break;
     
+    //Case to deliver the account update view to the user
+    case 'accountUpdateView':
+        include "../view/client-update.php";
+        break;
+
+    //Case to change the client's password
+    case 'changePassword':
+        //get the password input and sanitize it
+        $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING));
+        $clientId = trim(filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT));
+        //Check for the password pattern to make sure it is a match
+        $checkPassword = checkPassword($clientPassword);
+
+        if (empty($checkPassword)) {
+            $message = '<p class="errorMsg">Please, check the required password pattern.</p>';
+            include '../view/client-update.php';
+            exit;
+        }
+        //Hash the password to make sure it is secure
+        $hashedPassword = password_hash($clientPassword,PASSWORD_DEFAULT);
+        //Call the function that updates the clients table with the new password
+        $passwordStatus = changePassword($clientId, $hashedPassword);
+        if ($passwordStatus === 1) {
+            $_SESSION['message'] = "<p class='successMsg'>Your password was updated successfully.</p>";
+            header("Location: /phpmotors/accounts/");
+            exit;
+        }
+        else {
+            $_SESSION['message'] = "<p class='errorMsg'>Your password could not be updated.</p>";
+            header("Location: /phpmotors/accounts/");
+            exit;
+        }
+
+    //Case to update user information
+    case 'updateClientInfo':
+        //Get the user details and sanitize the values
+        $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
+        $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
+        $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+        $clientId = trim(filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT));
+        //Check the email to ensure it is valid
+        $clientEmail = checkEmail($clientEmail);
+        //Get the current client Email address that is stored in the Session Variable
+        $curEmail = $_SESSION['clientData']['clientEmail'];
+
+        //Code block to check if the the user sent any empty form inputs
+        if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)){
+            $message = "<p class='errorMsg'>Please provide infromation for all empty form fields.</p>";
+            include '../view/client-update.php';
+            exit;
+        }
+        elseif ($curEmail != $clientEmail){
+            $emailUnique = checkUniqueEmail($clientEmail);
+            if ($emailUnique == 1) {
+                $message = "<p class='errorMsg'>Email not available. Try a different one</p>";
+                include '../view/client-update.php';
+                exit;
+            }
+        }
+        //call the function in the model that inserts the update in the table
+        $updateStatus = updateClientInfo($clientId, $clientFirstname, $clientLastname, $clientEmail);
+        if ($updateStatus === 1) {
+            $clientUpdate = getClientUpdate($clientId);
+            //Remove the password from the array, the function removes the last item in an array
+            array_pop($clientUpdate);
+            //Store the array in a session
+            $_SESSION['clientData'] = $clientUpdate;
+            $_SESSION['message'] = "<p class='successMsg'>$clientFirstname, Your information was updated successfully.</p>";
+            header("Location: /phpmotors/accounts/");
+            exit;
+        }
+        else{
+            $_SESSION['message'] = "<p class='errorMsg'>$clientFirstname, Your information was not updated.</p>";
+            header("Location: /phpmotors/accounts/");
+            exit;
+        }
+
+        break;
+
+    //The default case to deliver the admin view
     default:
     include '../view/admin.php';        
 }

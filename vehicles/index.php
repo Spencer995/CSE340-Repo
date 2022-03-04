@@ -21,7 +21,7 @@ $classifications = getClassifications();
 // var_dump($classifications);
 //     exit;
 
-//Call the function to create the NavList from the functions.php file and assign the value to the 
+//Call the function to create the NavList from the 'functions.php' file and assign the value to the 
 //$navList variable
 $navList = createNavlist();
 

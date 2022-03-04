@@ -47,25 +47,25 @@
                             <div class="image_div">
                                 <img src="images/upgrades/flux-cap.png" alt="flux capcitor upgrade">
                             </div>
-                            <a href="#"><figcaption>Flux Capacitor</figcaption></a>
+                            <figcaption><a href="#">Flux Capacitor</a></figcaption>
                         </figure>
                         <figure>
                             <div class="image_div">
                                 <img src="images/upgrades/flame.jpg" alt="flame upgrade">
                             </div>                            
-                            <a href="#"><figcaption>Flame Decals</figcaption></a>
+                           <figcaption> <a href="#">Flame Decals</a></figcaption>
                         </figure>
                         <figure>
                             <div class="image_div">
                                 <img src="images/upgrades/bumper_sticker.jpg" alt="bumper sticker upgrade">
                             </div>                            
-                            <a href="#"><figcaption>Bumper Stickers</figcaption></a>
+                           <figcaption> <a href="#">Bumper Stickers</a></figcaption>
                         </figure>
                         <figure>
                             <div class="image_div">
                                 <img src="images/upgrades/hub-cap.jpg" alt="hub cap upgrade">
                             </div>
-                            <a href="#"><figcaption>Hub Caps</figcaption></a>
+                            <figcaption><a href="#">Hub Caps</a></figcaption>
                         </figure>
                     </div>
                 </div>
