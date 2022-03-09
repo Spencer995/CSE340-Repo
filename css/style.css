@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
-
+html{
+    box-sizing: border-box;
+   }
+   
+   *, *:before, *:after{
+    box-sizing: inherit;
+   }
 *{
     margin: 0;
     padding: 0;
@@ -157,7 +163,7 @@ figcaption{
 .own_today_button{
     position: absolute;
     align-self: center;
-    margin-top: 125px;
+    margin-top: 135px;
     max-width: 10em;
     margin-left: 25px;
 }
@@ -265,9 +271,59 @@ td{
 [class='tableDiv']{
     margin-left: 15px;
 }
+
+#inv-display{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+   }
+   
+   #inv-display li{
+    margin-bottom: .5em;
+    border: 1px #ccc solid;
+    list-style-type: none;
+    flex: 1 1 auto;
+   }
+   
+   #inv-display li img {
+       max-width: 100%;
+   }
+   [class='vehicleDetails']{
+       display: flex;
+       flex-direction: column;
+   }
+   .imgDiv, .infoDiv{
+    padding: 0 12px 0 12px;
+}
+.infoDiv p{
+    margin: 20px 0 20px 14px;
+    padding: 10px;
+    border-radius: 4px;
+}
+.imgDiv figure img{
+    max-width: 100%;
+    border-radius: 6px;
+}
+.imgDiv figcaption{
+    font-size: larger;
+    text-decoration: none;
+    padding: 20px;
+    color: #033158;
+}
+.infoDiv{
+    max-width: 100%;
+    height: auto;
+    margin-top: 7px;
+}
+.infoDiv p:nth-child(even){
+    background-color: #cfddeb;
+}
+
+
 /* ----------For Large Screens------------- */
 
-@media screen and (min-width:800px){
+@media screen and (min-width:768px){
     .review_upgrade{
         display: flex;
         flex-direction:row-reverse;
@@ -282,7 +338,7 @@ td{
         float: left;
         margin-top: 140px;
         max-width: 10em;
-        margin-left: -32px;
+        margin-left: -85px;
     }
     #review_list li{
         list-style-type: disc;
@@ -365,4 +421,29 @@ td{
     [name="invDescription"]{
         width:40%
     }
+    /* For vehicle display in classification view */
+	#inv-display {
+		flex-flow: row wrap;
+		justify-content: center;
+	}
+	#inv-display h2{
+		font-size: 1rem;
+        margin: 0 4px 0 4px;
+	}
+	#inv-display li {
+		max-width: 200px;
+		flex: 1 0 auto;
+		text-align: center;
+		height: 250px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	#inv-display div {
+		width: 100%;
+	}
+    [class='vehicleDetails']{
+        display: flex;
+        flex-direction: row;
+    } 
 }

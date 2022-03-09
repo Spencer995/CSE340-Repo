@@ -200,11 +200,34 @@ switch ($action){
             header("Location: /phpmotors/vehicles/");
             exit;
         }
-break;
+    break;
+    case 'classification':
+        $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $vehicles = getVehiclesByClassification($classificationName);
+        if(!count($vehicles)){
+            $message = "<p class='notice'>Sorry, no $classificationName vehicles could be found.</p>";
+          } else {
+            $vehicleDisplay = buildVehiclesDisplay($vehicles);
+          }
+          include '../view/classification.php';
+    break;
+
+    //Case to get the details of a specific vehicle
+    case 'getVehicleDetail':
+        $invId = filter_input(INPUT_GET, 'valueId', FILTER_SANITIZE_NUMBER_INT);
+        $vehicleDetail = getInvItemInfo($invId);
+        if (count($vehicleDetail)<1) {
+            $message = 'Sorry, no vehicle information could be found';
+        }
+        else{
+            $vehicleDetailDisplay = displayVehicleDetail($vehicleDetail);
+        }
+        include '../view/vehicle-detail.php';        
+    break;
+
     //default switch case to deliver the vehicle management view
     default:
         $classificationList = buildClassificationList($classifications);
         include '../view/vehicle-management.php'; 
-   
 }
 ?>

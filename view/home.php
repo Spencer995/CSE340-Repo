@@ -26,7 +26,7 @@
                     <p>Fuzzy Dice!</p>
                 </div>
                 <a href="#" class="own_today_button"><img src="images/site/own_today.png" alt="click the button to own the car"></a>
-                <img src="images/delorean.jpg" alt="banner image of a DMC Deloran car">
+                <img src="images/vehicles/delorean.jpg" alt="banner image of a DMC Deloran car">
                 
             </div>
             <div class="review_upgrade">
