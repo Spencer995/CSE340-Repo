@@ -68,6 +68,9 @@ header a:nth-child(1):hover{
  #nav_items_list{
     display:flex;
 }
+#nav_items_list a{
+    display: block;
+}
 #nav_bar{
       background-color: #3a3a3a;
 }
