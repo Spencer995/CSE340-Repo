@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&family=Rajdhani:wght@300&display=swap');
 html{
     box-sizing: border-box;
    }
@@ -20,7 +20,8 @@ html{
       background: url(../images/site/small_check.jpg);
       background-size:cover;
       background-repeat: no-repeat;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Fredoka', sans-serif;
+      /* font-family: 'Rajdhani', sans-serif; */
       max-width: 78%;
       margin: 15px auto;
   }
@@ -199,6 +200,7 @@ label + input{
     border-radius: 5px;
     font-size: small;
     padding-left: 5px;
+    transition: all 1s ease-in;
 }
 label + input:required:invalid{
     border-left: 5px solid red;
@@ -288,6 +290,7 @@ td{
    
    #inv-display li img {
        max-width: 100%;
+       /* max-height: 100%; */
    }
    [class='vehicleDetails']{
        display: flex;
