@@ -23,7 +23,7 @@ $classifications = getClassifications();
 
 //Call the function to create the NavList from the 'functions.php' file and assign the value to the 
 //$navList variable
-$navList = createNavlist();
+$navList = createNavlist($classifications);
 
 //***********Test code pieces**************
 // echo $selectList;

@@ -21,7 +21,7 @@ $classifications = getClassifications();
 // var_dump($classifications);
 //     exit;
 //Build the nav bar
-$navList = createNavlist();  
+$navList = createNavlist($classifications);  
 //***********Test code pieces**************
 // echo $navList;
 // exit;

@@ -325,6 +325,33 @@ td{
 .infoDiv p:nth-child(even){
     background-color: #cfddeb;
 }
+[class="vehicleImg"]{
+    margin: 15px;
+}
+input[type='radio']{
+    align-items: center;
+    display: inline;
+    width: 20px;
+    height: auto;
+    margin-top: -30px;
+}
+[id="image-display"]{
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+[id="image-display"] img{
+    max-width: 90%;
+    width: auto;
+    margin-bottom: 3px;
+}
+[id="image-display"] p{
+    margin-bottom: 15px;
+}
+hr{
+    width: 100%;
+    height: 10px;
+}
 
 
 /* ----------For Large Screens------------- */
@@ -452,4 +479,8 @@ td{
         display: flex;
         flex-direction: row;
     } 
+    [id="image-display"]{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
 }

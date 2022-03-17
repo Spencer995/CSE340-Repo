@@ -18,7 +18,7 @@ $classifications = getClassifications();
 // var_dump($classifications);
 //     exit;
 //Calls the function to create a dynamic nav bar in the functions.php file
-$navList = createNavlist();
+$navList = createNavlist($classifications);
 //***********Test code pieces**************
 // echo $navList;
 // exit;
