@@ -46,7 +46,7 @@ function buildVehiclesDisplay($vehicles){
     foreach ($vehicles as $vehicle) {
         $vehiclePrice = '$'.number_format($vehicle['invPrice'],2);
      $dv .= '<li>';
-     $dv .= "<a href='/phpmotors/vehicles/?action=getVehicleDetail&valueId=$vehicle[invId]'><img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'></a>";
+     $dv .= "<a href='/phpmotors/vehicles/?action=getVehicleDetail&valueId=$vehicle[invId]'><img src='$vehicle[imgPath]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'></a>";
      $dv .= '<hr>';
      $dv .= "<h2><a href='/phpmotors/vehicles/?action=getVehicleDetail&valueId=$vehicle[invId]'>$vehicle[invMake] $vehicle[invModel]</a></h2>";
      $dv .= "<span>$vehiclePrice</span>";
@@ -56,25 +56,32 @@ function buildVehiclesDisplay($vehicles){
     return $dv;
    }
 //function to display vehicle info in the 'vehicle-detail.php' view
-function displayVehicleDetail($vehicleDetail){
+function displayVehicleDetail($vehicleDetail, $assocThumbnail){
     $invPrice = '$'.number_format($vehicleDetail['invPrice'],2);
-    $div = "<section class='vehicleDetails'>
-                <div class='imgDiv'>
+    $div = "<section class='vehicleDetails'>";
+                $div .= "<ul class='thumbnailImg'>";
+                foreach($assocThumbnail as $thumbNail){
+                    $div .= "<li><img src='$thumbNail[imgPath]' alt='$vehicleDetail[invMake] $vehicleDetail[invModel] thumbnail'></li> ";
+                }
+                $div .= "</ul>";
+            $div .= "<div class='imgDiv'>
                     <figure>
-                        <img src='$vehicleDetail[invImage]' alt='Image of $vehicleDetail[invMake] $vehicleDetail[invModel] on PHPMotors.com'>
-                        <figcaption>Price: $invPrice</figcaption>
+                        <img src='$vehicleDetail[imgPath]' alt='Image of $vehicleDetail[invMake] $vehicleDetail[invModel] on PHPMotors.com'>
                     </figure>
                 </div>
                 <div class='infoDiv'>
                     <h2>$vehicleDetail[invMake] $vehicleDetail[invModel] Details</h2>
                     <p>$vehicleDetail[invDescription]</p>
+                    <p>Price: $invPrice</p>
                     <p>Color: $vehicleDetail[invColor]</p>
                     <p>Number in Stock: $vehicleDetail[invStock]</p>
                 </div>
             </section>";
     return $div;
 }  
-
+/************
+ * functionality for the image uploads path of the pad
+ */
 // Adds "-tn" designation to file name
 function makeThumbnailName($image) {
     $i = strrpos($image, '.');

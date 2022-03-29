@@ -71,7 +71,11 @@ function getInventoryByClassification($classificationId){
 //Fucnction to query the table and get vehicle information form the inventory table
 function getInvItemInfo($invId){
     $db = phpmotorsConnect();
-    $sql = 'SELECT * FROM inventory WHERE Invid = :invId';
+    $sql = "SELECT * 
+            FROM inventory JOIN images ON inventory.invId = images.invId
+            WHERE inventory.invId = :invId 
+                AND images.imgPrimary = 1 
+                AND NOT images.imgPath LIKE '%-tn%'";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
     $stmt->execute();
@@ -123,12 +127,13 @@ function deleteVehicle($invId) {
     $stmt->closeCursor();
     return $rowsChanged;
 }
-//Gets a list of vahicles based on their classification name
+//Gets a list of vehicles based on their classification name
 function getVehiclesByClassification($classificationName){
     $db = phpmotorsConnect();
-    $sql = 'SELECT * 
-            FROM inventory 
-            WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)';
+    $sql = "SELECT *
+            FROM inventory JOIN images ON images.invId = inventory.invId
+            WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)
+            AND images.imgPath LIKE '%-tn%' AND images.imgPrimary = 1";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
     $stmt->execute();

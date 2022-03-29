@@ -14,6 +14,8 @@ require_once '../model/main-model.php';
 require_once '../model/vehicles-model.php';
 //Brings the functions.php file into scope
 require_once '../library/functions.php';
+//Brings the uploads model into the vehicle controller scope
+require_once '../model/uploads-model.php';
 
 //Get the array of classifications
 $classifications = getClassifications();
@@ -216,11 +218,12 @@ switch ($action){
     case 'getVehicleDetail':
         $invId = filter_input(INPUT_GET, 'valueId', FILTER_SANITIZE_NUMBER_INT);
         $vehicleDetail = getInvItemInfo($invId);
+        $assocThumbnail = getThumbnailById($invId);
         if (count($vehicleDetail)<1) {
             $message = 'Sorry, no vehicle information could be found';
         }
         else{
-            $vehicleDetailDisplay = displayVehicleDetail($vehicleDetail);
+            $vehicleDetailDisplay = displayVehicleDetail($vehicleDetail, $assocThumbnail);
         }
         include '../view/vehicle-detail.php';        
     break;
