@@ -369,6 +369,54 @@ hr{
     border-radius: 3px;
 }
 
+[alt='search icon']{
+    max-width: 20%;
+    height: auto;
+    margin: 0 0 0 5px;
+}
+[class='container']{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 60%;
+}
+[class='search-form']{
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+    align-items: center;
+}
+[class='search-form'] [type="search"]{
+    width: 56%;
+    height: 40px;
+}
+[class='search-form'] label{
+    color: #2c29c5;
+    font-weight: bold;
+}
+h2[class='displayResult']{
+    margin: 20px auto;
+    text-align: center;
+    background-color: rgb(231, 230, 230);
+    padding: 0.6em;
+    max-width: 60%;
+}
+[class='searchList']{
+    margin: 10px 0 20px 25px;
+    max-width: 70%;
+}
+[class='vehicleImgDesc']{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 8px 0 25px 0;
+}
+.vehicleImgDesc img{
+    width: 120px;
+    height: auto;
+    border-radius: 4px;
+}
 
 
 /* ----------For Large Screens------------- */
@@ -530,4 +578,10 @@ hr{
     .infoDiv::after{
         content: '';
     }
+    [alt='search icon']{
+        max-width: 2em;
+        height: auto;
+        margin: 0 0 0 5px;
+    }
+
 }
